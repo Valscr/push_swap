@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 21:48:28 by valentin          #+#    #+#             */
-/*   Updated: 2022/10/06 09:58:15 by valentin         ###   ########.fr       */
+/*   Updated: 2022/10/06 13:15:54 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,12 @@ int	main(int argc, char **argv)
 	}
 	if (!push_swap_a(&data, data.len_a, 0) || !init2(&data))
 		return (free_all(&data));
-	if (!copy_tab(data.argv, &data) || !push_swap_a(&data, data.len_a, 1))
-		return (free_all(&data) && free_str(data.a));
-	if (!optimise_solution(&data) || write_solution(&data))
-		return (free_all(&data) && free_str(data.a));
-	return (free_all(&data) && free_str(data.a));
+	if (!copy_tab(data.argv, &data) || !push_swap_a(&data, data.len_a, 1)
+		|| !optimise_solution(&data) || !write_solution(&data))
+	{
+		free_str(data.a);
+		return (free_all(&data));
+	}
+	free_all(&data);
+	return (free_str(data.a));
 }
