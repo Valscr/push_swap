@@ -6,7 +6,7 @@
 #    By: valentin <valentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 00:00:15 by vescaffr          #+#    #+#              #
-#    Updated: 2022/08/19 23:48:30 by valentin         ###   ########.fr        #
+#    Updated: 2022/10/10 17:20:06 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,10 @@ RM		= rm -f
 CFLAGS = -Wall -Wextra -Werror
 
 .c.o:
-		${CC} ${CFLAGS} -g -c $< -o ${<:.c=.o}
+		@${CC} ${CFLAGS} -g -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJS}
-		ar rcs ${NAME} ${OBJS}
+		@ar rcs ${NAME} ${OBJS}
 
 all:	${NAME}
 

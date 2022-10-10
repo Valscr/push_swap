@@ -6,7 +6,7 @@
 #    By: valentin <valentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 20:14:31 by valentin          #+#    #+#              #
-#    Updated: 2022/10/06 12:39:28 by valentin         ###   ########.fr        #
+#    Updated: 2022/10/10 17:24:53 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,12 +51,10 @@ $(NAME2): ${OBJS2} maker
 $(DIR_OBJ)%.o : $(SRC_DIR)%.c
 		@mkdir -p $(DIR_OBJ)
 		@$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
-		@echo " [ OK ] "
 
 $(DIR_OBJ2)%.o : $(CHECKER_DIR)%.c
 		@mkdir -p $(DIR_OBJ2)
 		@$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
-		@echo " [ OK ] "
 
 all: ${NAME} ${NAME2}
 
@@ -64,7 +62,9 @@ bonus: ${NAME} ${NAME2}
 
 maker:
 		@make -C libft
+		@echo "[ OK ] libft"
 		@make -C ft_printf
+		@echo "[ OK ] ft_printf"
 
 clean:
 		@${RM} -rf ${DIR_OBJ}
