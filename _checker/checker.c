@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:17:36 by valentin          #+#    #+#             */
-/*   Updated: 2022/10/06 12:42:49 by valentin         ###   ########.fr       */
+/*   Updated: 2022/10/10 18:02:44 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,22 @@ int	check_split2(char **argv, int argc, t_data *data)
 
 int	main(int argc, char **argv)
 {
-	char	*input;
 	char	**a;
 	t_data	checker;
 
 	init_data2(&checker);
-	input = get_next_line(STDIN_FILENO);
-	a = ft_split(input, '\n');
-	if (!check_split2(argv, argc, &checker))
+	a = ft_split(get_next_line(STDIN_FILENO), '\n');
+	if (!a)
 		return (0);
+	if (!check_split2(argv, argc, &checker))
+	{
+		free_str(a);
+		return (0);
+	}
 	if (!pars_arg(checker.argv) || !copy_tab2(checker.argv, &checker))
 	{
 		ft_printf("Error\n");
+		free_str(a);
 		return (free_str(checker.argv));
 	}
 	exec(a, &checker);
@@ -74,8 +78,6 @@ int	main(int argc, char **argv)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
-	free(a);
-	free(input);
-	free_all(&checker);
-	return (0);
+	free_str(a);
+	return (free_all(&checker));
 }
