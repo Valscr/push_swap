@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:35:42 by valentin          #+#    #+#             */
-/*   Updated: 2022/10/06 13:03:30 by valentin         ###   ########.fr       */
+/*   Updated: 2022/10/10 16:41:02 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int	init2(t_data *data)
 
 int	free_all(t_data *data)
 {
-	free(data->tab_a);
-	free(data->tab_b);
+	if (data->tab_a)
+		free(data->tab_a);
+	if (data->tab_b)
+		free(data->tab_b);
 	free_str(data->argv);
 	return (0);
 }
