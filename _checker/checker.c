@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:17:36 by valentin          #+#    #+#             */
-/*   Updated: 2022/10/10 18:02:44 by valentin         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:09:56 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	copy_tab2(char **str, t_data *data)
 
 int	check_split2(char **argv, int argc, t_data *data)
 {
+	if (argc < 2)
+		return (0);
 	if (argc == 2)
 	{
 		data->argv = ft_split(argv[1], ' ');
@@ -53,6 +55,32 @@ int	check_split2(char **argv, int argc, t_data *data)
 	return (1);
 }
 
+int	check_seq(char **a, t_data *checker)
+{
+	int	i;
+
+	i = 0;
+	while (a[i])
+	{
+		if (check_pa(a, i) || check_pb(a, i)
+			|| check_ra(a, i) || check_rb(a, i)
+			|| check_rr(a, i) || check_rra(a, i)
+			|| check_rrb(a, i) || check_rrr(a, i)
+			|| check_sa(a, i) || check_sb(a, i)
+			|| check_ss(a, i))
+		{
+			i++;
+		}
+		else
+		{
+			ft_printf("KO\n");
+			free_str(checker->argv);
+			return (0);
+		}
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	char	**a;
@@ -62,7 +90,7 @@ int	main(int argc, char **argv)
 	a = ft_split(get_next_line(STDIN_FILENO), '\n');
 	if (!a)
 		return (0);
-	if (!check_split2(argv, argc, &checker))
+	if (!check_split2(argv, argc, &checker) || !check_seq(a, &checker))
 	{
 		free_str(a);
 		return (0);
