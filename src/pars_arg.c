@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 18:53:36 by valentin          #+#    #+#             */
-/*   Updated: 2022/10/06 10:45:34 by valentin         ###   ########.fr       */
+/*   Updated: 2022/11/20 23:12:46 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,13 @@ int	check_numb(char **argv)
 	while (argv[y] != NULL)
 	{
 		i = 0;
-		if (!ft_isdigit(argv[y][i]) && argv[y][i] != '-')
-		{
-			ft_printf("** Arguments must be numbers\n");
+		if (!ft_isdigit(argv[y][i]) && argv[y][0] != '-' && argv[y][0] != '+')
 			return (0);
-		}
 		i++;
 		while (argv[y][i] != '\0')
 		{
 			if (!ft_isdigit(argv[y][i]))
-			{
-				ft_printf("** Arguments must be numbers\n");
 				return (0);
-			}
 			i++;
 		}
 		y++;
@@ -62,10 +56,7 @@ int	check_double(char **argv)
 		while (argv[d] != NULL)
 		{
 			if (f == ft_atoi(argv[d]) && d != i)
-			{
-				ft_printf("** Duplicated numbers are not allowed\n");
 				return (0);
-			}
 			d++;
 		}
 		i++;
@@ -76,10 +67,7 @@ int	check_double(char **argv)
 int	is_int(char **argv)
 {
 	if (!is_int1(argv))
-	{
-		ft_printf("** Numbers must be integer\n");
 		return (0);
-	}
 	return (1);
 }
 

@@ -6,11 +6,18 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:17:36 by valentin          #+#    #+#             */
-/*   Updated: 2022/11/08 16:09:56 by valentin         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:32:42 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void	write_error(char *str)
+{
+	while (*str)
+		write(2, str++, 1);
+	return ;
+}
 
 int	copy_tab2(char **str, t_data *data)
 {
@@ -86,7 +93,7 @@ int	main(int argc, char **argv)
 	char	**a;
 	t_data	checker;
 
-	init_data2(&checker);
+	init_data2(&checker, argc);
 	a = ft_split(get_next_line(STDIN_FILENO), '\n');
 	if (!a)
 		return (0);
@@ -97,7 +104,7 @@ int	main(int argc, char **argv)
 	}
 	if (!pars_arg(checker.argv) || !copy_tab2(checker.argv, &checker))
 	{
-		ft_printf("Error\n");
+		write_error("Error\n");
 		free_str(a);
 		return (free_str(checker.argv));
 	}

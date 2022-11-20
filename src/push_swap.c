@@ -6,11 +6,18 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 21:48:28 by valentin          #+#    #+#             */
-/*   Updated: 2022/10/06 13:15:54 by valentin         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:34:45 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	write_error(char *str)
+{
+	while (*str)
+		write(2, str++, 1);
+	return ;
+}
 
 void	init_data(t_data *data)
 {
@@ -89,7 +96,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!pars_arg(data.argv) || !copy_tab(data.argv, &data))
 	{
-		ft_printf("Error\n");
+		write_error("Error\n");
 		return (free_str(data.argv));
 	}
 	if (!push_swap_a(&data, data.len_a, 0) || !init2(&data))

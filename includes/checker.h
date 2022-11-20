@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:58:20 by valentin          #+#    #+#             */
-/*   Updated: 2022/10/06 12:38:52 by valentin         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:32:29 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*get_next(char *save, int fd);
 char	*get_next_line(int fd);
 int		get_size(char *s1, char *s2);
 int		free_all(t_data *data);
-void	init_data2(t_data *data);
+void	init_data2(t_data *data, int argc);
 int		check_pb(char **a, int y);
 int		check_pa(char **a, int y);
 int		check_rb(char **a, int y);
@@ -72,5 +72,6 @@ int		pars_arg(char **argv);
 int		check_double(char **argv);
 int		is_int(char **argv);
 int		is_int1(char **argv);
+void	write_error(char *str);
 
 #endif

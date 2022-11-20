@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:58:47 by valentin          #+#    #+#             */
-/*   Updated: 2022/10/06 10:34:18 by valentin         ###   ########.fr       */
+/*   Updated: 2022/11/20 23:05:18 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,13 @@ int	free_all(t_data *data)
 	return (0);
 }
 
-void	init_data2(t_data *data)
+void	init_data2(t_data *data, int argc)
 {
+	if (argc < 2 || STDIN_FILENO == NULL)
+	{
+		write_error("Error\n");
+		exit (0);
+	}
 	data->len_a = 0;
 	data->len_b = 0;
 	data->nb = 0;

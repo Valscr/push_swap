@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 18:53:36 by valentin          #+#    #+#             */
-/*   Updated: 2022/11/08 15:39:08 by valentin         ###   ########.fr       */
+/*   Updated: 2022/11/20 23:08:34 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_numb(char **argv)
 	while (argv[y] != NULL)
 	{
 		i = 0;
-		if (!ft_isdigit(argv[y][i]) && argv[y][i] != '-')
+		if (!ft_isdigit(argv[y][i]) && argv[y][0] != '-' && argv[y][0] != '+')
 			return (0);
 		i++;
 		while (argv[y][i] != '\0')

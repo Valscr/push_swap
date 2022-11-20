@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:19:11 by vescaffr          #+#    #+#             */
-/*   Updated: 2022/10/06 09:53:23 by valentin         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:34:15 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int		optimise_ra(t_data *data, int y);
 int		optimise_rb(t_data *data, int y);
 int		optimise_rra(t_data *data, int y);
 int		optimise_rrb(t_data *data, int y);
+void	write_error(char *str);
 
 #endif
